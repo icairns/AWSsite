@@ -12,7 +12,7 @@
 
          if (mysqli_connect_errno()) echo "Failed to connect to MySQL: " . mysqli_connect_error();
         $database = mysqli_select_db($connection, DB_DATABASE);
-        
+
         VerifyEmployeesTable($table, $connection, DB_DATABASE); 
 
 
@@ -82,7 +82,7 @@ function VerifyEmployeesTable($table,$connection, $dbName) {
   	if (!$result){
   		echo("couldn't create table");
   	}
-  	header('Location: Login.php');
+  	//header('Location: Login.php');
      echo("added Table");
      exit;
   }
