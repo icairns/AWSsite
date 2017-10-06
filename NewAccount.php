@@ -12,6 +12,7 @@
 
          if (mysqli_connect_errno()) echo "Failed to connect to MySQL: " . mysqli_connect_error();
         $database = mysqli_select_db($connection, DB_DATABASE);
+        VerifyEmployeesTable($table, $connection, DB_DATABASE); 
 
         if (isset($_POST['login']) && !empty($_POST['username']) 
                && !empty($_POST['password'])) {
@@ -26,5 +27,37 @@
                	header("Location: Login.php");
                	exit;
                }
+
+
+
+function VerifyEmployeesTable($table,$connection, $dbName) {
+  if(!TableExists($table , $connection, $dbName)) 
+  { 
+  	echo("table doesnt exist");
+  	/*$query = "CREATE TABLE `Employees`.`users` ( `id` INT(255) NOT NULL AUTO_INCREMENT , `name` VARCHAR(255) NOT NULL , `password` VARCHAR(255) NOT NULL , PRIMARY KEY (`id`)) ENGINE = InnoDB";
+  	$result = mysqli_query($connection, $query); 
+  	if (!$result){
+  		echo("couldn't create table");*/
+  	
+  	
+     exit;
+  }
+}
+
+
+
+/* Check for the existence of a table. */
+function TableExists($tableName, $connection, $dbName) {
+  $t = mysqli_real_escape_string($connection, $tableName);
+  $d = mysqli_real_escape_string($connection, $dbName);
+
+  $checktable = mysqli_query($connection, 
+      "SELECT TABLE_NAME FROM information_schema.TABLES WHERE TABLE_NAME = '$t' AND TABLE_SCHEMA = '$d'");
+
+  if(mysqli_num_rows($checktable) > 0) return true;
+
+  return false;
+}
+?>
 
  ?>

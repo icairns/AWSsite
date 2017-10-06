@@ -12,6 +12,7 @@
 
          if (mysqli_connect_errno()) echo "Failed to connect to MySQL: " . mysqli_connect_error();
         $database = mysqli_select_db($connection, DB_DATABASE);
+        
         VerifyEmployeesTable($table, $connection, DB_DATABASE); 
 
 
