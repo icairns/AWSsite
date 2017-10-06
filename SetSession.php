@@ -76,7 +76,7 @@ function AddEmployee($connection, $name, $address) {
 function VerifyEmployeesTable($table,$connection, $dbName) {
   if(!TableExists($table , $connection, $dbName)) 
   { 
-  	$query = CREATE TABLE `Employees`.`users` ( `id` INT(255) NOT NULL AUTO_INCREMENT , `name` VARCHAR(255) NOT NULL , `password` VARCHAR(255) NOT NULL , PRIMARY KEY (`id`)) ENGINE = InnoDB;
+  	$query = "CREATE TABLE `Employees`.`users` ( `id` INT(255) NOT NULL AUTO_INCREMENT , `name` VARCHAR(255) NOT NULL , `password` VARCHAR(255) NOT NULL , PRIMARY KEY (`id`)) ENGINE = InnoDB";
   	$result = mysqli_query($connection, $query); 
   	if (!$result){
   		echo("couldn't create table");
