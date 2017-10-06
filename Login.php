@@ -60,6 +60,10 @@
             text-align: center;
             color: #017572;
          }
+         h1{
+            text-align: center;
+            color: #017572;
+         }
       </style>
       
    </head>
@@ -87,7 +91,7 @@
                name = "login">Login</button>
          </form>
 			
-         Click here to clean <a href = "logout.php" tite = "Logout">Session.
+         Create Account <a href = "CreateAccount.php" tite = "Logout">Session.
          
       </div> 
       
