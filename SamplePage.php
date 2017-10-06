@@ -15,12 +15,15 @@
   VerifyEmployeesTable($connection, DB_DATABASE); 
 
   /* If input fields are populated, add a row to the Employees table. */
-  $employee_name = htmlentities($_POST['Name']);
-  $employee_address = htmlentities($_POST['Address']);
+  if ( isset($_POST['Name'])){
+   $employee_name = htmlentities($_POST['Name']);
+   $employee_address = htmlentities($_POST['Address']);
+ 
 
-  if (strlen($employee_name) || strlen($employee_address)) {
-    AddEmployee($connection, $employee_name, $employee_address);
-  }
+   if (strlen($employee_name) || strlen($employee_address)) {
+     AddEmployee($connection, $employee_name, $employee_address);
+   }
+ }
 ?>
 
 <!-- Input form -->
