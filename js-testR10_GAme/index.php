@@ -1,5 +1,5 @@
 <?php
-   include("CheckSession.php");
+   include("../CheckSession.php");
 ?>
 
 <!doctype html>
