@@ -18,7 +18,7 @@
                   $_SESSION['valid'] = true;
                         $_SESSION['username'] = $_POST["username"];
                         $_SESSION['id'] = $row["id"];
-                        header('Location: js-testR10_GAme/index.html');
+                        header('Location: js-testR10_GAme/index.php');
                         exit;
                }
                   
