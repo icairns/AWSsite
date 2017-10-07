@@ -1,12 +1,7 @@
 <?php
-   session_start();
+   include("CheckSession.php");
 ?>
 
 <?php
-	if($_SESSION['username']){
 		echo("Welcome"." ".$_SESSION['username']);
-	}else{
-		header('Location: Login.php');
-		exit;
-	}
 ?>
