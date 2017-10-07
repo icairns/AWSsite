@@ -125,14 +125,15 @@ VerifyEmployeesTable($table, $connection, DB_DATABASE);
          <form class = "form-signin" role = "form" 
             action = "<?php echo $_SERVER['PHP_SELF']; ?>"  method = "post">
             <!-- <h4 class = "form-signin-heading"><?php echo $msg; ?></h4> -->
-            Enter Username
+            Enter Username</br>
             <input type = "text" class = "form-control" 
                name = "username" placeholder = "username" 
                required autofocus></br>
-            Enter Password
+               
+            Enter Password</br>
             <input type = "password" class = "form-control"
                name = "password" placeholder = "password" required></br>
-            Re-enter Password
+            Re-enter Password</br>
             <input type = "password" class = "form-control"
                name = "password2" placeholder = "password" required>
             <button class = "btn btn-lg btn-primary btn-block" type = "submit" 
