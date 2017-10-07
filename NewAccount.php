@@ -2,17 +2,20 @@
    ob_start();
    session_start();
 ?>
-<?php include "../inc/dbinfo.inc"; ?>
+<?php include "../inc/dbinfo.inc"; 
+include "ConnectandCreateTable.php";
+?>
 
 
 <?php
-		$table = "users";
-         /* Connect to MySQL and select the database. */
+		/*$table = "users";
+         
          $connection = mysqli_connect(DB_SERVER, DB_USERNAME, DB_PASSWORD);
 
          if (mysqli_connect_errno()) echo "Failed to connect to MySQL: " . mysqli_connect_error();
         $database = mysqli_select_db($connection, DB_DATABASE);
         VerifyEmployeesTable($table, $connection, DB_DATABASE); 
+        */
 
         if (isset($_POST['login']) && !empty($_POST['username']) 
                && !empty($_POST['password'])) {
@@ -30,23 +33,23 @@
 
 
 
-function VerifyEmployeesTable($table,$connection, $dbName) {
+/*function VerifyEmployeesTable($table,$connection, $dbName) {
   if(!TableExists($table , $connection, $dbName)) 
   { 
   	echo("table doesnt exist");
   	/*$query = "CREATE TABLE `Employees`.`users` ( `id` INT(255) NOT NULL AUTO_INCREMENT , `name` VARCHAR(255) NOT NULL , `password` VARCHAR(255) NOT NULL , PRIMARY KEY (`id`)) ENGINE = InnoDB";
   	$result = mysqli_query($connection, $query); 
   	if (!$result){
-  		echo("couldn't create table");*/
+  		echo("couldn't create table");
   	
   	
-     exit;
+     //exit;
   }
 }
 
 
 
-/* Check for the existence of a table. */
+/* Check for the existence of a table. 
 function TableExists($tableName, $connection, $dbName) {
   $t = mysqli_real_escape_string($connection, $tableName);
   $d = mysqli_real_escape_string($connection, $dbName);
@@ -57,7 +60,7 @@ function TableExists($tableName, $connection, $dbName) {
   if(mysqli_num_rows($checktable) > 0) return true;
 
   return false;
-}
+}*/
 ?>
 
  ?>

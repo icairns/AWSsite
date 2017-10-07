@@ -91,7 +91,7 @@
                name = "login">Login</button>
          </form>
 			
-         Create Account <a href = "CreateAccount.php" tite = "Logout">Session.
+         <a href = "CreateAccount.php" tite = "Logout">Create Account
          
       </div> 
       
