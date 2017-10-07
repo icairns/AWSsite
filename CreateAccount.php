@@ -9,23 +9,6 @@ VerifyEmployeesTable($table, $connection, DB_DATABASE);
 ?>
 
 
-<?php
-        if (isset($_POST['login']) && !empty($_POST['username']) 
-               && !empty($_POST['password'])) {
-                  $username=$_POST['username'];
-                  $password=md5($_POST['password']);
-                  $query = "INSERT INTO `users`(`name`, `password`) VALUES ('$username','$password')";
-                  $result = mysqli_query($connection, $query);
-                  if(!$result){
-                     echo("couldn't insert");
-                     exit;
-                  }
-                  header("Location: Login.php");
-                  exit;
-               }
-
-?>
-
 
 
 <html lang = "en">
@@ -93,6 +76,10 @@ VerifyEmployeesTable($table, $connection, DB_DATABASE);
             text-align: center;
             color: #017572;
          }
+         h3{
+            text-align: center;
+            color: red;
+         }
       </style>
       
    </head>
@@ -105,19 +92,55 @@ VerifyEmployeesTable($table, $connection, DB_DATABASE);
          
          
       </div> <!-- /container -->
+
+      <?php
+        if (isset($_POST['login']) && !empty($_POST['username']) 
+               && !empty($_POST['password'])) {
+                  $username=$_POST['username'];
+                  $password=md5($_POST['password']);
+                  $password2=md5($_POST['password2']);
+                  $result = mysqli_query($connection, "SELECT * FROM users WHERE name= '$username'"); 
+                  if($password!=$password2){
+                     echo("<h3>Passwords do not Match</h3>");
+                  }
+                  elseif(mysqli_num_rows($result)){
+                     echo("<h3>Username Already Exists</h3>");
+                  }
+                  else{
+                     $query = "INSERT INTO `users`(`name`, `password`) VALUES ('$username','$password')";
+                     $result = mysqli_query($connection, $query);
+                     if(!$result){
+                        echo("couldn't insert");
+                        exit;
+                     }
+                     header("Location: Login.php");
+                     exit;
+                  }
+               }
+
+?>
       
       <div class = "container">
       
          <form class = "form-signin" role = "form" 
             action = "<?php echo $_SERVER['PHP_SELF']; ?>"  method = "post">
             <!-- <h4 class = "form-signin-heading"><?php echo $msg; ?></h4> -->
+            Enter Username
             <input type = "text" class = "form-control" 
-               name = "username" placeholder = "username = tutorialspoint" 
+               name = "username" placeholder = "username" 
                required autofocus></br>
+            Enter Password
             <input type = "password" class = "form-control"
-               name = "password" placeholder = "password = 1234" required>
+               name = "password" placeholder = "password" required></br>
+            Re-enter Password
+            <input type = "password" class = "form-control"
+               name = "password2" placeholder = "password" required>
             <button class = "btn btn-lg btn-primary btn-block" type = "submit" 
                name = "login">Add Account</button>
+
+            <?php
+
+            ?>
          </form>
 			
          

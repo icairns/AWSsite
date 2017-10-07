@@ -123,11 +123,11 @@
          <form class = "form-signin" role = "form" 
             action = "<?php echo $_SERVER['PHP_SELF']; ?>" method = "post">
             <!-- <h4 class = "form-signin-heading"><?php echo $msg; ?></h4> -->
-            <input type = "text" class = "form-control" 
-               name = "username" placeholder = "username = tutorialspoint" 
+            Enter Username<input type = "text" class = "form-control" 
+               name = "username" placeholder = "username" 
                required autofocus></br>
-            <input type = "password" class = "form-control"
-               name = "password" placeholder = "password = 1234" required>
+            Enter Password <input type = "password" class = "form-control"
+               name = "password" placeholder = "password" required>
             <button class = "btn btn-lg btn-primary btn-block" type = "submit" 
                name = "login">Login</button>
          </form>
