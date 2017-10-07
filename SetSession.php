@@ -1,7 +1,9 @@
 <?php
    session_start();
    include "../inc/dbinfo.inc"; 
+   $table = "users";
 	include "ConnectandCreateTable.php";
+	VerifyEmployeesTable($table, $connection, DB_DATABASE); 
        
  ?>
 
