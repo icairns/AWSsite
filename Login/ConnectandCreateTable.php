@@ -29,7 +29,7 @@ function VerifyEmployeesTable($connection, $dbName) {
 function VerifyHitsTable($connection, $dbName) {
   if(!TableExists('Hits' , $connection, $dbName)) 
   { 
-    $query = "CREATE TABLE `Employees`.`Hits` ( `count` INT NOT NULL ) ENGINE = InnoDB";
+    $query = "CREATE TABLE `Hits` ( `count` INT NOT NULL ) ENGINE = InnoDB";
     $result = mysqli_query($connection, $query); 
     if (!$result){
       echo("couldn't create hits table");
