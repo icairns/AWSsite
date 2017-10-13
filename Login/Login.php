@@ -1,9 +1,11 @@
 <?php
    session_start();
-   include "../inc/dbinfo.inc"; 
-   $table = "users";
+   include "../../inc/dbinfo.inc"; 
+   
    include "ConnectandCreateTable.php";
-   VerifyEmployeesTable($table, $connection, DB_DATABASE); 
+   VerifyEmployeesTable( $connection, DB_DATABASE); 
+
+
        
  ?>
 
@@ -11,14 +13,26 @@
             if (isset($_POST['login']) && !empty($_POST['username']) 
                && !empty($_POST['password'])) {
                   $username=$_POST['username'];
-            $result = mysqli_query($connection, "SELECT * FROM users WHERE name= '$username'"); 
-            if (mysqli_num_rows($result)==1) {
+               $stmt = $connection->prepare("SELECT * FROM users WHERE name =?");
+               $stmt->bind_param("s", $username);
+               $stmt->execute();
+
+
+
+               $result = $stmt->get_result();
+               //$stmt="SELECT * FROM users WHERE name ='$username'";
+               //$result = mysqli_query($connection, $stmt);
+
+
+            //if (mysqli_num_rows($result)==1) {
+            if($result){
                $row = mysqli_fetch_assoc($result);
-               if($row["password"]==md5($_POST['password'])){
+               if($row["password"]==md5($_POST['password'])&&$username ==$row["name"]){
                   $_SESSION['valid'] = true;
                         $_SESSION['username'] = $_POST["username"];
                         $_SESSION['id'] = $row["id"];
-                        header('Location: js-testR10_GAme/index.php');
+                        include "AddHit.php";
+                        header('Location: ../index.php');
                         exit;
                }
                   
@@ -40,21 +54,21 @@
 <html lang = "en">
    
    <head>
-      <title>Tutorialspoint.com</title>
+      <title>Login</title>
       <link href = "css/bootstrap.min.css" rel = "stylesheet">
       
       <style>
          body {
             padding-top: 40px;
             padding-bottom: 40px;
-            background-color: #ADABAB;
+            /*background-color: #ADABAB;*/
          }
          
          .form-signin {
             max-width: 330px;
             padding: 15px;
             margin: 0 auto;
-            color: #017572;
+            /*color: #017572;*/
          }
          
          .form-signin .form-signin-heading,
@@ -84,23 +98,23 @@
             margin-bottom: -1px;
             border-bottom-right-radius: 0;
             border-bottom-left-radius: 0;
-            border-color:#017572;
+            /*border-color:#017572;*/
          }
          
          .form-signin input[type="password"] {
             margin-bottom: 10px;
             border-top-left-radius: 0;
             border-top-right-radius: 0;
-            border-color:#017572;
+            /*border-color:#017572;*/
          }
          
          h2{
             text-align: center;
-            color: #017572;
+            /*color: #017572;*/
          }
          h1{
             text-align: center;
-            color: #017572;
+            /*color: #017572;*/
          }
          h3{
             text-align: center;

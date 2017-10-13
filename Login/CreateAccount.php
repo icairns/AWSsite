@@ -2,10 +2,11 @@
 <?php
    session_start();
 ?>
-<?php include "../inc/dbinfo.inc"; 
-$table = "users";
+<?php 
+include "../../inc/dbinfo.inc"; 
+
 include "ConnectandCreateTable.php";
-VerifyEmployeesTable($table, $connection, DB_DATABASE); 
+VerifyEmployeesTable( $connection, DB_DATABASE); 
 ?>
 
 
@@ -21,14 +22,14 @@ VerifyEmployeesTable($table, $connection, DB_DATABASE);
          body {
             padding-top: 40px;
             padding-bottom: 40px;
-            background-color: #ADABAB;
+            /*background-color: #ADABAB;*/
          }
          
          .form-signin {
             max-width: 330px;
             padding: 15px;
             margin: 0 auto;
-            color: #017572;
+            /*color: #017572;*/
          }
          
          .form-signin .form-signin-heading,
@@ -58,23 +59,23 @@ VerifyEmployeesTable($table, $connection, DB_DATABASE);
             margin-bottom: -1px;
             border-bottom-right-radius: 0;
             border-bottom-left-radius: 0;
-            border-color:#017572;
+            /*border-color:#017572;*/
          }
          
          .form-signin input[type="password"] {
             margin-bottom: 10px;
             border-top-left-radius: 0;
             border-top-right-radius: 0;
-            border-color:#017572;
+            /*border-color:#017572;*/
          }
          
          h2{
             text-align: center;
-            color: #017572;
+         /*color: #017572;*/
          }
          h1{
             text-align: center;
-            color: #017572;
+            /*color: #017572;*/
          }
          h3{
             text-align: center;
@@ -99,7 +100,11 @@ VerifyEmployeesTable($table, $connection, DB_DATABASE);
                   $username=$_POST['username'];
                   $password=md5($_POST['password']);
                   $password2=md5($_POST['password2']);
-                  $result = mysqli_query($connection, "SELECT * FROM users WHERE name= '$username'"); 
+                  $stmt = $connection->prepare("SELECT * FROM users WHERE name =?");
+                  $stmt->bind_param("s", $username);
+                  $stmt->execute();
+
+                  $result = $stmt->get_result(); 
                   if($password!=$password2){
                      echo("<h3>Passwords do not Match</h3>");
                   }
@@ -107,6 +112,12 @@ VerifyEmployeesTable($table, $connection, DB_DATABASE);
                      echo("<h3>Username Already Exists</h3>");
                   }
                   else{
+                     // $stmt = $connection->prepare("INSERT INTO 'users'(`name`, `password`) VALUES (:name, :pass)");
+                     // $stmt->bindParam(':name', $username);
+                     // $stmt->bind_param(":pass", $password);
+                     // $stmt->execute();
+
+                     // $result = $stmt->get_result();
                      $query = "INSERT INTO `users`(`name`, `password`) VALUES ('$username','$password')";
                      $result = mysqli_query($connection, $query);
                      if(!$result){
@@ -139,11 +150,8 @@ VerifyEmployeesTable($table, $connection, DB_DATABASE);
             <button class = "btn btn-lg btn-primary btn-block" type = "submit" 
                name = "login">Add Account</button>
 
-            <?php
-
-            ?>
          </form>
-			
+			<a href = "Login.php" tite = "Logout">Login
          
          
       </div> 

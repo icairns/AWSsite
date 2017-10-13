@@ -5,14 +5,14 @@
 
          if (mysqli_connect_errno()) echo "Failed to connect to MySQL: " . mysqli_connect_error();
         $database = mysqli_select_db($connection, DB_DATABASE);
-
+        
         
 
 
 
         /* Check whether the table exists and, if not, create it. */
-function VerifyEmployeesTable($table,$connection, $dbName) {
-  if(!TableExists($table , $connection, $dbName)) 
+function VerifyEmployeesTable($connection, $dbName) {
+  if(!TableExists('users' , $connection, $dbName)) 
   { 
   	$query = "CREATE TABLE `users` ( `id` INT(255) NOT NULL AUTO_INCREMENT , `name` VARCHAR(255) NOT NULL , `password` VARCHAR(255) NOT NULL , PRIMARY KEY (`id`)) ENGINE = InnoDB";
   	$result = mysqli_query($connection, $query); 
@@ -21,6 +21,21 @@ function VerifyEmployeesTable($table,$connection, $dbName) {
   		exit;
   	}
   	
+  }
+
+}
+
+
+function VerifyHitsTable($connection, $dbName) {
+  if(!TableExists('Hits' , $connection, $dbName)) 
+  { 
+    $query = "CREATE TABLE `Employees`.`Hits` ( `count` INT NOT NULL ) ENGINE = InnoDB";
+    $result = mysqli_query($connection, $query); 
+    if (!$result){
+      echo("couldn't create hits table");
+      exit;
+    }
+    
   }
 
 }
@@ -37,4 +52,6 @@ function TableExists($tableName, $connection, $dbName) {
 
   return false;
 }
+
+
 ?>
