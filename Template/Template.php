@@ -38,7 +38,7 @@
 			    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 			      <ul class="nav navbar-nav">
 			        <li><a href="../LoopingGame/MinionPage.php">JS Game <span class="sr-only">(current)</span></a></li>
-			        <li><a href="../SiteVisitors/SiteVisitors.php">Number of Visitors</a></li>
+			        <li><a href="../SiteVisitors/SiteVisitors.php">Number of Visits</a></li>
 			      </ul>
 			      <!-- <form class="navbar-form navbar-left">
 			        <div class="form-group">
