@@ -20,7 +20,7 @@
    			//include "../Login/ConnectandCreateTable.php";
    			include("../Template/Template.php");
 		?>
-		<h1>Number of Visitors</h1>
+		<h1>Number of Visits</h1>
 		
 		<h1><?php
 			$result = mysqli_query($connection, "SELECT `count` FROM `Hits` WHERE 1"); 
