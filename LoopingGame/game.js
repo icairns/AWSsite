@@ -11,7 +11,7 @@ var MONSTERHEIGHT=60;
 var fiftypoints;
 var score=0;
 var bat;
-var minionHeight= 100;
+var minionHeight= 60;
 var myfriend;
 var fireBall=[];
 var fireFlower;
@@ -57,7 +57,7 @@ function startGame() {
     myIslands=[];
     myMonsters=[];
     fireBall=[];
-    myGamePiece = new mainComponent(40, minionHeight, minion_Walking.src, 10, 120, "image");
+    myGamePiece = new mainComponent(60, minionHeight, minion_Walking.src, 10, 120, "image");
     myfriend = new component(20, minionHeight / 2, friend.src, 10, 120, "image");
     for(var i=0; i < 10 ; i+=1){
         
