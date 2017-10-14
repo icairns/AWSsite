@@ -11,7 +11,7 @@ var MONSTERHEIGHT=60;
 var fiftypoints;
 var score=0;
 var bat;
-var minionHeight= 60;
+var minionHeight= 100;
 var myfriend;
 var fireBall=[];
 var fireFlower;
