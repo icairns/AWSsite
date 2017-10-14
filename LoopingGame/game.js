@@ -37,8 +37,8 @@ var fireflower= new Image();
 function startGame() {
     
     
-    minion_Walking.src= 'CircManStand1.png';
-    minion_fire.src=  "CircManFire.png";
+    minion_Walking.src= 'minion_walking.png';
+    minion_fire.src=  "minion_fire.png";
     friend.src ='friend.png';
     fireball1.src = "fireball1.png";
     fireball2.src = "fireball2.png";
